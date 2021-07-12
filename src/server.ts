@@ -1,22 +1,17 @@
 import "reflect-metadata";
 import express, { NextFunction, Request, Response } from "express";
-// import "express-async-errors";
+import "express-async-errors";
 
 import "./database";
 
-// import "./shared/container";
+import "./shared/container";
 
 import { router } from "./routes";
 import { AppError } from "./errors/AppError";
-// import { AppError } from "./errors/AppError";
 
 const app = express();
 
 app.use(express.json());
-
-app.get("/", (request, response) => {
-  return response.json({ message: "OK" });
-});
 
 // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
