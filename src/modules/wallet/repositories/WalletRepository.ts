@@ -16,12 +16,14 @@ class WalletRepository implements IWalletRepository {
     operation,
     value,
     description,
+    category_id,
   }: ICreateWalletDTO): Promise<void> {
     const wallet = this.repository.create({
       user_id,
       operation,
       value,
       description,
+      category_id,
     });
 
     await this.repository.save(wallet);

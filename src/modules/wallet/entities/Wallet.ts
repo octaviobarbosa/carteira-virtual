@@ -7,6 +7,7 @@ import {
   PrimaryColumn,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { Category } from "../../category/entities/Category";
 import { User } from "../../user/entities/User";
 
 @Entity("wallet")
@@ -32,6 +33,13 @@ class Wallet {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @Column()
+  category_id: string;
+
+  @ManyToOne(() => Category)
+  @JoinColumn({ name: "category_id" })
+  category: Category;
 
   constructor() {
     if (!this.id) {
