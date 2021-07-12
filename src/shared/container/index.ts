@@ -1,19 +1,22 @@
 import { container } from "tsyringe";
-import { IUserRepository } from "../../modules/user/repositories/IUserRepository";
-import { UserRepository } from "../../modules/user/repositories/UserRepository";
+import { IUsersRepository } from "../../modules/users/repositories/IUsersRepository";
+import { UsersRepository } from "../../modules/users/repositories/UsersRepository";
 
-import { IWalletRepository } from "../../modules/wallet/repositories/IWalletRepository";
-import { WalletRepository } from "../../modules/wallet/repositories/WalletRepository";
+import { ITransactionsRepository } from "../../modules/transactions/repositories/ITransactionsRepository";
+import { TransactionsRepository } from "../../modules/transactions/repositories/TransactionsRepository";
 
-import { ICategoryRepository } from "../../modules/category/repositories/ICategoryRepository";
-import { CategoryRepository } from "../../modules/category/repositories/CategoryRepository";
+import { ICategoriesRepository } from "../../modules/categories/repositories/ICategoriesRepository";
+import { CategoriesRepository } from "../../modules/categories/repositories/CategoriesRepository";
 
-container.registerSingleton<IUserRepository>("UserRepository", UserRepository);
-container.registerSingleton<IWalletRepository>(
-  "WalletRepository",
-  WalletRepository,
+container.registerSingleton<IUsersRepository>(
+  "UserRepository",
+  UsersRepository,
 );
-container.registerSingleton<ICategoryRepository>(
-  "CategoryRepository",
-  CategoryRepository,
+container.registerSingleton<ITransactionsRepository>(
+  "TransactionsRepository",
+  TransactionsRepository,
+);
+container.registerSingleton<ICategoriesRepository>(
+  "CategoriesRepository",
+  CategoriesRepository,
 );
