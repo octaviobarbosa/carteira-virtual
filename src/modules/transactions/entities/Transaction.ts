@@ -41,6 +41,20 @@ class Transaction {
   @JoinColumn({ name: "category_id" })
   category: Category;
 
+  @Column()
+  to_user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "to_user_id" })
+  to_user: User;
+
+  @Column()
+  from_user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "from_user_id" })
+  from_user: User;
+
   constructor() {
     if (!this.id) {
       this.id = uuidV4();
