@@ -12,7 +12,7 @@ import { ITransactionLogsRepository } from "../../modules/transactions/repositor
 import { TransactionLogsRepository } from "../../modules/transactions/repositories/TransactionLogsRepository";
 
 container.registerSingleton<IUsersRepository>(
-  "UserRepository",
+  "UsersRepository",
   UsersRepository,
 );
 container.registerSingleton<ITransactionsRepository>(
