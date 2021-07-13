@@ -5,6 +5,7 @@ import { ITransactionsRepository } from "../../repositories/ITransactionsReposit
 import { AppError } from "../../../../errors/AppError";
 import { IUsersRepository } from "../../../users/repositories/IUsersRepository";
 import { ICategoriesRepository } from "../../../categories/repositories/ICategoriesRepository";
+import { ITransactionLogsRepository } from "../../repositories/ITransactionLogsRepository";
 
 @injectable()
 class CreateTransactionUseCase {
@@ -15,6 +16,8 @@ class CreateTransactionUseCase {
     private usersRepository: IUsersRepository,
     @inject("CategoriesRepository")
     private categoriesRepository: ICategoriesRepository,
+    @inject("TransactionLogsRepository")
+    private transactionLogsRepository: ITransactionLogsRepository,
   ) {}
 
   async execute({
@@ -46,6 +49,20 @@ class CreateTransactionUseCase {
       value,
       description,
       category_id,
+    });
+
+    // log
+    const date = new Date();
+    const log = `${
+      operation === "I" ? "Depositou" : "Retirou"
+    } ${value} em ${date.toLocaleDateString("pt-br")}`;
+
+    await this.transactionLogsRepository.create({
+      user_id,
+      date,
+      operation,
+      value,
+      log,
     });
   }
 }

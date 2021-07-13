@@ -8,6 +8,9 @@ import { TransactionsRepository } from "../../modules/transactions/repositories/
 import { ICategoriesRepository } from "../../modules/categories/repositories/ICategoriesRepository";
 import { CategoriesRepository } from "../../modules/categories/repositories/CategoriesRepository";
 
+import { ITransactionLogsRepository } from "../../modules/transactions/repositories/ITransactionLogsRepository";
+import { TransactionLogsRepository } from "../../modules/transactions/repositories/TransactionLogsRepository";
+
 container.registerSingleton<IUsersRepository>(
   "UserRepository",
   UsersRepository,
@@ -19,4 +22,8 @@ container.registerSingleton<ITransactionsRepository>(
 container.registerSingleton<ICategoriesRepository>(
   "CategoriesRepository",
   CategoriesRepository,
+);
+container.registerSingleton<ITransactionLogsRepository>(
+  "TransactionLogsRepository",
+  TransactionLogsRepository,
 );
