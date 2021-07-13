@@ -42,15 +42,15 @@ class TransactionsRepository implements ITransactionsRepository {
     const { income } = await this.repository
       .createQueryBuilder("wallet")
       .select("SUM(wallet.value)", "income")
-      .where("user_id = :id", { user_id })
-      .where("operation = 'I'")
+      .where("user_id = :id", { id: user_id })
+      .andWhere("operation = 'I'")
       .getRawOne();
 
     const { outcome } = await this.repository
       .createQueryBuilder("wallet")
       .select("SUM(wallet.value)", "outcome")
-      .where("user_id = :id", { user_id })
-      .where("operation = 'O'")
+      .where("user_id = :id", { id: user_id })
+      .andWhere("operation = 'O'")
       .getRawOne();
 
     const balance = {
