@@ -7,7 +7,7 @@ import { AppError } from "../../../../errors/AppError";
 import { IUsersRepository } from "../../../users/repositories/IUsersRepository";
 
 interface IRequest {
-  user_id?: string;
+  user_id: string;
   start?: Date;
   end?: Date;
 }
@@ -17,7 +17,7 @@ class ExportTransactionLogUseCase {
   constructor(
     @inject("TransactionLogsRepository")
     private transactionLogsRepository: ITransactionLogsRepository,
-    @inject("UserRepository")
+    @inject("UsersRepository")
     private usersRepository: IUsersRepository,
   ) {}
 

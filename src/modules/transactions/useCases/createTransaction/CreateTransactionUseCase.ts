@@ -12,7 +12,7 @@ class CreateTransactionUseCase {
   constructor(
     @inject("TransactionsRepository")
     private transactionsRepository: ITransactionsRepository,
-    @inject("UserRepository")
+    @inject("UsersRepository")
     private usersRepository: IUsersRepository,
     @inject("CategoriesRepository")
     private categoriesRepository: ICategoriesRepository,

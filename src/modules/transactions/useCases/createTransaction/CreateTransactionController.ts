@@ -6,14 +6,14 @@ class CreateTransactionController {
   constructor() {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { user_id, operation, value, description, category_id } =
-      request.body;
+    const { operation, value, description, category_id } = request.body;
+    const { id } = request.user;
     const createTransactionUseCase = container.resolve(
       CreateTransactionUseCase,
     );
 
     await createTransactionUseCase.execute({
-      user_id,
+      user_id: id,
       operation,
       value,
       description,

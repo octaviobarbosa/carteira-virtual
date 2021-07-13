@@ -6,7 +6,7 @@ class GetBalanceController {
   constructor() {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
+    const { id } = request.user;
     const getBalanceUseCase = container.resolve(GetBalanceUseCase);
 
     const balance = await getBalanceUseCase.execute({

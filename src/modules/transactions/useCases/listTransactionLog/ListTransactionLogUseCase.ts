@@ -16,7 +16,7 @@ class ListTransactionLogUseCase {
   constructor(
     @inject("TransactionLogsRepository")
     private transactionLogsRepository: ITransactionLogsRepository,
-    @inject("UserRepository")
+    @inject("UsersRepository")
     private usersRepository: IUsersRepository,
   ) {}
 

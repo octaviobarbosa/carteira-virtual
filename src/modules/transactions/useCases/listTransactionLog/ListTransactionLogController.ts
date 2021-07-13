@@ -6,13 +6,14 @@ class ListTransactionLogController {
   constructor() {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { user_id, start, end } = request.query;
+    const { start, end } = request.query;
+    const { id } = request.user;
     const listTransactionLogUseCase = container.resolve(
       ListTransactionLogUseCase,
     );
 
     const logs = await listTransactionLogUseCase.execute({
-      user_id: user_id as string,
+      user_id: id,
       start: new Date(start as string),
       end: new Date(end as string),
     });

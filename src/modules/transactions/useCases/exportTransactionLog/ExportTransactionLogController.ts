@@ -7,13 +7,14 @@ class ExportTransactionLogController {
   constructor() {}
 
   async handle(request: Request, response: Response): Promise<void> {
-    const { user_id, start, end } = request.query;
+    const { start, end } = request.query;
+    const { id } = request.user;
     const exportTransactionLogUseCase = container.resolve(
       ExportTransactionLogUseCase,
     );
 
     const path = await exportTransactionLogUseCase.execute({
-      user_id: user_id as string,
+      user_id: id,
       start: new Date(start as string),
       end: new Date(end as string),
     });
