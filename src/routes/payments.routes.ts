@@ -5,6 +5,7 @@ import { CreatePaymentController } from "../modules/payments/useCases/createPaym
 import { ReversePaymentController } from "../modules/payments/useCases/reversePayment/ReversePaymentController";
 import { DeletePaymentController } from "../modules/payments/useCases/deletePayment/DeletePaymentController";
 import { UpdatePaymentController } from "../modules/payments/useCases/updatePayment/UpdatePaymentController";
+import { ListPaymentController } from "../modules/payments/useCases/listPayments/ListPaymentsController";
 
 const paymentsRoutes = Router();
 
@@ -13,8 +14,10 @@ const payPaymentController = new PayPaymentController();
 const reversePaymentController = new ReversePaymentController();
 const deletePaymentController = new DeletePaymentController();
 const updatePaymentController = new UpdatePaymentController();
+const listPaymentController = new ListPaymentController();
 
 paymentsRoutes.post("/", ensureAuthenticated, createPaymentController.handle);
+paymentsRoutes.get("/", ensureAuthenticated, listPaymentController.handle);
 paymentsRoutes.post("/pay", ensureAuthenticated, payPaymentController.handle);
 paymentsRoutes.post(
   "/reverse/:id",
