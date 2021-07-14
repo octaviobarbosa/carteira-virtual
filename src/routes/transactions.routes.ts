@@ -4,6 +4,8 @@ import { ListTransactionLogController } from "../modules/transactions/useCases/l
 import { GetBalanceController } from "../modules/transactions/useCases/getBalance/GetBalanceController";
 import { ExportTransactionLogController } from "../modules/transactions/useCases/exportTransactionLog/ExportTransactionLogController";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
+import { SendTransactionController } from "../modules/transactions/useCases/sendTransaction/SendTransactionController";
+import { ListFriendTransactionsController } from "../modules/transactions/useCases/listFriendTransactions/ListFriendTransactionsController";
 
 const transactionsRoutes = Router();
 
@@ -11,12 +13,27 @@ const createTransactionController = new CreateTransactionController();
 const getBalanceController = new GetBalanceController();
 const listTransactionLogController = new ListTransactionLogController();
 const exportTransactionLogController = new ExportTransactionLogController();
+const sendTransactionController = new SendTransactionController();
+const listFriendTransactionsController = new ListFriendTransactionsController();
 
 transactionsRoutes.post(
   "/",
   ensureAuthenticated,
   createTransactionController.handle,
 );
+
+transactionsRoutes.get(
+  "/friends-transactions",
+  ensureAuthenticated,
+  listFriendTransactionsController.handle,
+);
+
+transactionsRoutes.post(
+  "/send/",
+  ensureAuthenticated,
+  sendTransactionController.handle,
+);
+
 transactionsRoutes.get(
   "/balance/",
   ensureAuthenticated,

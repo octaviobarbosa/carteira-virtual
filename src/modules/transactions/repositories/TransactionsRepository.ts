@@ -1,8 +1,14 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, IsNull, Not, Repository } from "typeorm";
 import { ICreateTransactionDTO } from "../dtos/ICreateTransactionDTO";
 
 import { Transaction } from "../entities/Transaction";
 import { ITransactionsRepository } from "./ITransactionsRepository";
+
+// interface Balance {
+//   income: number;
+//   outcome: number;
+//   balance: number;
+// }
 
 class TransactionsRepository implements ITransactionsRepository {
   private repository: Repository<Transaction>;
@@ -17,6 +23,8 @@ class TransactionsRepository implements ITransactionsRepository {
     value,
     description,
     category_id,
+    to_user_id,
+    from_user_id,
   }: ICreateTransactionDTO): Promise<void> {
     const Transaction = this.repository.create({
       user_id,
@@ -24,6 +32,8 @@ class TransactionsRepository implements ITransactionsRepository {
       value,
       description,
       category_id,
+      to_user_id,
+      from_user_id,
     });
 
     await this.repository.save(Transaction);
@@ -38,7 +48,7 @@ class TransactionsRepository implements ITransactionsRepository {
     return Transaction;
   }
 
-  async getBalance(user_id: string): Promise<object> {
+  async getBalance(user_id: string): Promise<any> {
     const { income } = await this.repository
       .createQueryBuilder("wallet")
       .select("SUM(wallet.value)", "income")
@@ -58,7 +68,25 @@ class TransactionsRepository implements ITransactionsRepository {
       outcome: outcome ? Number(outcome) : 0,
       balance: income - outcome,
     };
+
     return balance;
+  }
+
+  async getFriendsTransactions(user_id: string): Promise<Transaction[]> {
+    const Transaction = await this.repository.find({
+      where: [
+        {
+          user_id,
+          to_user_id: Not(IsNull()),
+        },
+        {
+          user_id,
+          from_user_id: Not(IsNull()),
+        },
+      ],
+      relations: ["user", "to_user", "from_user"],
+    });
+    return Transaction;
   }
 }
 

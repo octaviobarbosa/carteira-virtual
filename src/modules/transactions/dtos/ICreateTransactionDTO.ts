@@ -5,6 +5,8 @@ interface ICreateTransactionDTO {
   description: string;
   value: number;
   category_id?: string;
+  to_user_id?: string;
+  from_user_id?: string;
 }
 
 export { ICreateTransactionDTO };
