@@ -1,0 +1,10 @@
+id,user_id,date,operation,value,log,created_at
+48bb17a8-8177-4551-bd4b-013097f16f4b,ea223e88-bbb0-444c-a716-5b72326c94b1,Tue Jul 13 2021 00:00:00 GMT-0300 (Brasilia Standard Time),I,2000.00,Depositou 2000 em 13/07/2021,Tue Jul 13 2021 15:09:02 GMT-0300 (Brasilia Standard Time)
+9e0c211b-46cf-4c6e-a996-a69d78402e77,ea223e88-bbb0-444c-a716-5b72326c94b1,Tue Jul 13 2021 00:00:00 GMT-0300 (Brasilia Standard Time),I,2000.00,Depositou 2000 em 13/07/2021,Tue Jul 13 2021 15:09:35 GMT-0300 (Brasilia Standard Time)
+14df1de7-49ce-4798-91ee-6572cf24ead9,ea223e88-bbb0-444c-a716-5b72326c94b1,Tue Jul 13 2021 00:00:00 GMT-0300 (Brasilia Standard Time),O,200.00,Retirou 200 em 13/07/2021,Tue Jul 13 2021 15:18:28 GMT-0300 (Brasilia Standard Time)
+b8fc0431-116a-41d8-bba6-fe82f702a7ef,ea223e88-bbb0-444c-a716-5b72326c94b1,Tue Jul 13 2021 00:00:00 GMT-0300 (Brasilia Standard Time),O,200.00,Pagamento enviado para Octavio no valor de R$ 200 em 13/07/2021,Tue Jul 13 2021 16:02:13 GMT-0300 (Brasilia Standard Time)
+4bb3dbef-bf51-440d-9c59-190f9e0d1643,ea223e88-bbb0-444c-a716-5b72326c94b1,Wed Jul 14 2021 00:00:00 GMT-0300 (Brasilia Standard Time),I,500.00,Depositou 500 em 14/07/2021,Wed Jul 14 2021 14:18:01 GMT-0300 (Brasilia Standard Time)
+2388412c-b445-4f7e-a29c-f92a10da6fd3,ea223e88-bbb0-444c-a716-5b72326c94b1,Wed Jul 14 2021 00:00:00 GMT-0300 (Brasilia Standard Time),I,200.00,Depositou 200 em 14/07/2021,Wed Jul 14 2021 18:17:52 GMT-0300 (Brasilia Standard Time)
+88a1f817-222f-4edb-acbd-e335903db341,ea223e88-bbb0-444c-a716-5b72326c94b1,Wed Jul 14 2021 00:00:00 GMT-0300 (Brasilia Standard Time),O,156.78,Retirou 156.78 em 14/07/2021,Wed Jul 14 2021 18:18:19 GMT-0300 (Brasilia Standard Time)
+ac5ff2fb-8dfe-4909-8fc3-5934727d2533,ea223e88-bbb0-444c-a716-5b72326c94b1,Wed Jul 14 2021 00:00:00 GMT-0300 (Brasilia Standard Time),O,3.22,Retirou 3.22 em 14/07/2021,Wed Jul 14 2021 18:19:26 GMT-0300 (Brasilia Standard Time)
+e9cb7928-8a4f-458c-87aa-11d30fde9f72,ea223e88-bbb0-444c-a716-5b72326c94b1,Wed Jul 14 2021 00:00:00 GMT-0300 (Brasilia Standard Time),O,40.12,Retirou 40.12 em 14/07/2021,Wed Jul 14 2021 18:19:41 GMT-0300 (Brasilia Standard Time)

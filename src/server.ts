@@ -12,7 +12,14 @@ import { AppError } from "./errors/AppError";
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    // origin: 'http://localhost:8080',
+    // credentials: true,
+    exposedHeaders: ["Content-Disposition"],
+  }),
+);
 app.use(express.json());
 
 // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
