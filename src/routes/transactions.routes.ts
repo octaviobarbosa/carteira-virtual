@@ -6,6 +6,7 @@ import { ExportTransactionLogController } from "../modules/transactions/useCases
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 import { SendTransactionController } from "../modules/transactions/useCases/sendTransaction/SendTransactionController";
 import { ListFriendTransactionsController } from "../modules/transactions/useCases/listFriendTransactions/ListFriendTransactionsController";
+import { ListTransactionsController } from "../modules/transactions/useCases/listTransactions/ListTransactionsController";
 
 const transactionsRoutes = Router();
 
@@ -15,6 +16,13 @@ const listTransactionLogController = new ListTransactionLogController();
 const exportTransactionLogController = new ExportTransactionLogController();
 const sendTransactionController = new SendTransactionController();
 const listFriendTransactionsController = new ListFriendTransactionsController();
+const listTransactionController = new ListTransactionsController();
+
+transactionsRoutes.get(
+  "/",
+  ensureAuthenticated,
+  listTransactionController.handle,
+);
 
 transactionsRoutes.post(
   "/",

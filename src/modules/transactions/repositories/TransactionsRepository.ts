@@ -44,6 +44,10 @@ class TransactionsRepository implements ITransactionsRepository {
       where: {
         user_id,
       },
+      order: {
+        created_at: "DESC",
+      },
+      relations: ["user", "category", "to_user", "from_user", "payment"],
     });
     return Transaction;
   }
