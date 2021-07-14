@@ -20,6 +20,19 @@ class CategoriesRepository implements ICategoriesRepository {
     await this.repository.save(category);
   }
 
+  async list(): Promise<Category[]> {
+    const categories = await this.repository.find();
+    return categories;
+  }
+
+  async update(data: ICreateCategoryDTO): Promise<void> {
+    await this.repository.update(data.id, data);
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.repository.delete({ id });
+  }
+
   async findById(id: string): Promise<Category> {
     const category = await this.repository.findOne(id);
     return category;
