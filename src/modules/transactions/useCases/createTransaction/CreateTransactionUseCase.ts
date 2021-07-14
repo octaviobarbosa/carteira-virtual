@@ -26,6 +26,7 @@ class CreateTransactionUseCase {
     value,
     description,
     category_id,
+    payment_id,
   }: ICreateTransactionDTO): Promise<void> {
     const userExists = await this.usersRepository.findById(user_id);
 
@@ -49,6 +50,7 @@ class CreateTransactionUseCase {
       value,
       description,
       category_id,
+      payment_id,
     });
 
     // log

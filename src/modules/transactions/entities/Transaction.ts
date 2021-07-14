@@ -9,6 +9,7 @@ import {
 import { v4 as uuidV4 } from "uuid";
 import { Category } from "../../categories/entities/Category";
 import { User } from "../../users/entities/User";
+import { Payment } from "../../payments/entities/Payment";
 
 @Entity("transactions")
 class Transaction {
@@ -54,6 +55,13 @@ class Transaction {
   @ManyToOne(() => User)
   @JoinColumn({ name: "from_user_id" })
   from_user: User;
+
+  @Column()
+  payment_id: string;
+
+  @ManyToOne(() => Payment)
+  @JoinColumn({ name: "payment_id" })
+  payment: Payment;
 
   constructor() {
     if (!this.id) {

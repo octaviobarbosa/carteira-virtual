@@ -4,12 +4,6 @@ import { ICreateTransactionDTO } from "../dtos/ICreateTransactionDTO";
 import { Transaction } from "../entities/Transaction";
 import { ITransactionsRepository } from "./ITransactionsRepository";
 
-// interface Balance {
-//   income: number;
-//   outcome: number;
-//   balance: number;
-// }
-
 class TransactionsRepository implements ITransactionsRepository {
   private repository: Repository<Transaction>;
 
@@ -25,6 +19,7 @@ class TransactionsRepository implements ITransactionsRepository {
     category_id,
     to_user_id,
     from_user_id,
+    payment_id,
   }: ICreateTransactionDTO): Promise<void> {
     const Transaction = this.repository.create({
       user_id,
@@ -34,9 +29,14 @@ class TransactionsRepository implements ITransactionsRepository {
       category_id,
       to_user_id,
       from_user_id,
+      payment_id,
     });
 
     await this.repository.save(Transaction);
+  }
+
+  async deleteByPaymentId(payment_id: string): Promise<void> {
+    await this.repository.delete({ payment_id });
   }
 
   async findByUserId(user_id: string): Promise<Transaction[]> {
