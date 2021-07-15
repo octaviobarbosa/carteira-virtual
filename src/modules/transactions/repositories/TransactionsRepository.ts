@@ -88,6 +88,9 @@ class TransactionsRepository implements ITransactionsRepository {
           from_user_id: Not(IsNull()),
         },
       ],
+      order: {
+        created_at: "DESC",
+      },
       relations: ["user", "to_user", "from_user"],
     });
     return Transaction;
