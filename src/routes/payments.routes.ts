@@ -21,17 +21,17 @@ const getPaymentController = new GetPaymentController();
 paymentsRoutes.post("/", ensureAuthenticated, createPaymentController.handle);
 paymentsRoutes.get("/", ensureAuthenticated, listPaymentController.handle);
 paymentsRoutes.get("/:id", ensureAuthenticated, getPaymentController.handle);
-paymentsRoutes.post("/pay", ensureAuthenticated, payPaymentController.handle);
-paymentsRoutes.post(
-  "/reverse/:id",
-  ensureAuthenticated,
-  reversePaymentController.handle,
-);
 paymentsRoutes.put("/:id", ensureAuthenticated, updatePaymentController.handle);
 paymentsRoutes.delete(
   "/:id",
   ensureAuthenticated,
   deletePaymentController.handle,
+);
+paymentsRoutes.post("/pay", ensureAuthenticated, payPaymentController.handle);
+paymentsRoutes.post(
+  "/reverse/:id",
+  ensureAuthenticated,
+  reversePaymentController.handle,
 );
 
 export { paymentsRoutes };
