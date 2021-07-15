@@ -43,6 +43,10 @@ class PayPaymentUseCase {
       throw new AppError("Payment closed, cannot be edited!");
     }
 
+    if (!payment_date) {
+      throw new AppError("Payment date is null!");
+    }
+
     await this.paymentsRepository.pay(payment_id, payment_date);
 
     await this.transactionsRepository.create({

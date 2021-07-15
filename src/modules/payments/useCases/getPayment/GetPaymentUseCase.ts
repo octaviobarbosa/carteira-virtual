@@ -4,24 +4,18 @@ import { AppError } from "../../../../errors/AppError";
 import { IPaymentsRepository } from "../../../payments/repositories/IPaymentsRepository";
 import { IUsersRepository } from "../../../users/repositories/IUsersRepository";
 import { ITransactionsRepository } from "../../../transactions/repositories/ITransactionsRepository";
-
-interface IPayDTO {
-  user_id: string;
-  payment_id: string;
-}
+import { Payment } from "modules/payments/entities/Payment";
 
 @injectable()
-class ReversePaymentUseCase {
+class GetPaymentUseCase {
   constructor(
     @inject("PaymentsRepository")
     private paymentsRepository: IPaymentsRepository,
     @inject("UsersRepository")
     private usersRepository: IUsersRepository,
-    @inject("TransactionsRepository")
-    private transactionsRepository: ITransactionsRepository,
   ) {}
 
-  async execute({ user_id, payment_id }: IPayDTO): Promise<void> {
+  async execute(user_id: string, payment_id: string): Promise<Payment> {
     const userExists = await this.usersRepository.findById(user_id);
 
     if (!userExists) {
@@ -34,18 +28,8 @@ class ReversePaymentUseCase {
       throw new AppError("Payment not found!");
     }
 
-    if (payment.user_id != user_id) {
-      throw new AppError("User different of Payment owner!");
-    }
-
-    if (!payment_id) {
-      throw new AppError("Payment id is null!");
-    }
-
-    await this.paymentsRepository.reverse(payment_id);
-
-    await this.transactionsRepository.deleteByPaymentId(payment_id);
+    return payment;
   }
 }
 
-export { ReversePaymentUseCase };
+export { GetPaymentUseCase };
