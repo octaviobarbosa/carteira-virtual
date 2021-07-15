@@ -53,7 +53,7 @@ class PayPaymentUseCase {
       user_id,
       operation: payment.type === "R" ? "I" : "O",
       value: payment.value,
-      description: `Baixa de conta a ${
+      description: `Baixa de conta à ${
         payment.type === "R" ? "receber" : "pagar"
       } realizado em ${new Date(payment_date).toLocaleDateString("pt-br")}`,
       payment_id,
