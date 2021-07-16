@@ -15,7 +15,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Apos baixar/clonar o projeto, no diretório do projeto execute:
 
-`npm install` ou `yarn`
+```bash
+npm install
+# ou
+yarn
+```
 
 para instalar as dependências necessárias.
 
@@ -25,11 +29,19 @@ Crie o banco de dados com o nome `carteira-virtual` ou o nome de sua preferencia
 
 Execute as migrations com o comando:
 
-`npm run typeorm migration:run` ou `yarn typeorm migration:run`
+```bash
+npm run typeorm migration:run
+# ou
+yarn typeorm migration:run
+```
 
 Agora você ja deve ser capaz de rodar o backend, utilize o comando:
 
-`npm run dev` or `yarn dev`
+```bash
+npm run dev
+# ou
+yarn dev
+```
 
 Por padrão o backend estara sendo executado na porta `3333` para acessar utilize (http://localhost:3333)
 
