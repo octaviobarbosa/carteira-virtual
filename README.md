@@ -13,15 +13,13 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## Como executar
 
-Apos baixar/clonar o projeto, no diretório do projeto execute:
+Apos baixar/clonar o projeto para instalar as dependências necessárias, no diretório do projeto execute:
 
 ```bash
 npm install
 # ou
 yarn
 ```
-
-para instalar as dependências necessárias.
 
 No arquivo ormconfig.json configure as credenciais para acesso ao banco de dados.
 
@@ -43,7 +41,7 @@ npm run dev
 yarn dev
 ```
 
-Por padrão o backend estara sendo executado na porta `3333` para acessar utilize (http://localhost:3333)
+Por padrão o backend estara sendo executado na porta `3333` para acessar utilize [http://localhost:3333](http://localhost:3333)
 
 ## Documentação
 
